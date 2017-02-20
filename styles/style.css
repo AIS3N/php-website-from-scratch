@@ -1,0 +1,80 @@
+/*  Nav   */
+
+nav
+{
+    display:inline-block;
+    text-align: center;
+    height: 50px;
+    width:98%;
+    background-color: peachpuff;
+}
+
+nav form
+{
+    display:inline;
+}
+
+@media all and (max-width: 930px)
+{
+    nav
+    {
+        height: 80px;
+    }
+}
+
+a
+{
+    text-decoration:none;
+}
+
+nav li a
+{
+    padding-top:17px;
+    padding-bottom:8px;
+    padding-right:35px;
+    padding-left:12px;
+}
+
+li input
+{
+    height:25px;
+}
+
+nav li a:hover
+{
+    background-color: #e7e7e7;
+}
+
+nav li
+{
+    display: inline;
+    font-size:1.3em;
+}
+
+nav li a
+{
+    margin-left: 4.5%;
+}
+
+nav ul, #co
+{
+    list-style-type: none;
+}
+
+nav li img
+{
+    height:15px;
+    width:15px;
+}
+
+nav a
+{
+    color: #898989;
+}
+
+
+#go
+{
+    width: 30px;
+    border-radius:120px;
+}

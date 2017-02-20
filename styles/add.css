@@ -1,0 +1,162 @@
+body
+{
+    width: 100%;
+    height: 100%;
+    display:inline-block;
+    background:url('../images/fond.jpg')no-repeat;
+    background-size: 100% 100%;
+    background-position: 0px 0px;
+}
+
+a
+{
+    text-decoration:none;
+}
+
+#onglet_co
+{
+    width: 15%;
+    padding-bottom: 1px;
+    padding-top: 1px;
+    background-color: #f8f8f8;
+    border-radius: 12px 12px 0px 0px;
+    text-align: center;
+}
+
+@media all and (max-width: 870px)
+{
+    div button
+    {
+        width:auto;
+        font-size:8px;
+        height:20px;
+    }
+
+}
+
+body h1
+{
+    text-align:center;
+}
+
+h1
+{
+    font-family: sansita one;
+}
+
+#titre
+{
+    font-family: sansita one;
+    color: #ffffff;
+    font-size: 500%;
+    text-shadow: 6px 6px rgba(0, 0, 0, 0.1);
+}
+
+/*  Footer  */
+
+footer
+{
+    margin-right: 10px;
+    background-color: #ffffff;
+    border: solid 1px;
+    font-family: Arial;
+}
+
+footer h1
+{
+    font-family: Arial;
+}
+
+footer span
+{
+    border-right: solid 1px;
+}
+
+#satisfait
+{
+    display: inline-block;
+    vertical-align: top;
+    width: 20%;
+    margin-left: 5%;
+}
+
+/* form */
+article form
+{
+    display:inline-block;
+    border:1px solid black;
+    background-color:white;
+    width:300px;
+    text-align:center;
+    margin-bottom:22.5%;
+    padding:3%;
+    border-radius:10px 10px 10px 10px;
+    margin-top:2%;
+}
+
+form h1
+{
+    margin-top:0;
+    font-family: sansita one;
+    border-bottom:1px solid;
+}
+
+article select
+{
+    display: block;
+    margin: auto;
+}
+
+article textarea
+{
+    height: 100px;
+}
+
+article input
+{
+    font-size:20px;
+    height: 30px;
+}
+
+article input
+{
+    margin-bottom:5%;
+}
+
+.form
+{
+    display:inline-block;
+    top:0;
+    left:0;
+    right:0;
+}
+
+@media all and (max-width: 870px)
+{
+    article form
+    {
+        display:block;
+        margin:auto;
+        margin-top:10px;
+        margin-bottom:10px;
+    }
+}
+
+#footer2
+{
+    text-align: center;
+    background-color: #f8f8f8;
+    height: 20px;
+}
+
+@media all and (min-width:700px)
+{
+    hr
+    {
+        display: inline-block;
+        margin-top:30px;
+        width: 2px;
+        height: 150px;
+        background-color: black;
+    }
+}

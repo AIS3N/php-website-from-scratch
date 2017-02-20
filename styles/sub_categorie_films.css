@@ -1,0 +1,115 @@
+body
+{
+    width: 100%;
+    height: 100%;
+    display:inline-block;
+    background:url('../images/fond.jpg')no-repeat;
+    background-size: 100% 100%;
+    background-position: 0px 0px;
+}
+
+a
+{
+    text-decoration:none;
+}
+
+#onglet_co
+{
+    width:15%;
+    padding-bottom: 1px;
+    padding-top: 1px;
+    background-color: #f8f8f8;
+    border-radius: 12px 12px 0px 0px;
+    text-align: center;
+}
+
+@media all and (max-width: 870px)
+{
+    div button
+    {
+        width:auto;
+        font-size:8px;
+        height:20px;
+    }
+
+}
+
+body h1
+{
+    text-align:center;
+}
+
+h1
+{
+    font-family: sansita one;
+}
+
+#titre
+{
+    font-family: sansita one;
+    color: #ffffff;
+    font-size: 500%;
+    text-shadow: 6px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Article */
+
+article
+{
+    margin:30px;
+    border:1px solid black;
+    background-color:white;
+}
+
+.sub_categorie img
+{
+    height:200px;
+    width:200px;
+}
+
+article div
+{
+    display:block;
+    width:auto;
+}
+
+.sub_categorie
+{
+    display:inline-block;
+    padding: 2%;
+    margin-bottom:30px;
+}
+
+/*  Footer  */
+
+footer
+{
+    margin-right: 10px;
+    background-color: #ffffff;
+    font-family: Arial;
+}
+
+footer h1
+{
+    font-family: Arial;
+}
+
+footer span
+{
+    border-right: solid 1px;
+}
+
+#satisfait
+{
+    display: inline-block;
+    vertical-align: top;
+    width: 20%;
+    margin-left: 5%;
+}
+
+#footer2
+{
+    text-align: center;
+    background-color: #f8f8f8;
+    height: 20px;
+}

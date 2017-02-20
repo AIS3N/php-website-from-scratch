@@ -1,0 +1,193 @@
+CREATE DATABASE my_streaming
+DEFAULT CHARACTER SET utf8mb4
+DEFAULT COLLATE utf8mb4_general_ci;
+USE my_streaming;
+START TRANSACTION;
+
+CREATE TABLE Role (
+ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+libelle VARCHAR(20),
+DESCRIPTION TEXT
+);
+
+CREATE TABLE Utilisateurs (
+ID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+Role INT,
+FOREIGN KEY (Role) REFERENCES Role(ID),
+Nom VARCHAR(50),
+Prenom VARCHAR(50),
+Pseudo VARCHAR(20),
+Password VARCHAR (255) NOT NULL,
+Date_de_naissance DATE,
+Mail VARCHAR(255),
+Pays VARCHAR(50),
+Sexe VARCHAR(1),
+Date_creation DATE,
+Date_modification DATE
+);
+
+CREATE TABLE Films (
+ID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+Titre VARCHAR (50),
+Realisateur VARCHAR (250),
+Annee FLOAT,
+Image VARCHAR(250),
+Categorie INT,
+Duree VARCHAR (50),
+Synopsis TEXT,
+note INT
+);
+
+CREATE TABLE Series (
+ID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+Titre VARCHAR (50),
+Realisateur VARCHAR (250),
+Annee FLOAT,
+Image VARCHAR(250),
+Categorie INT,
+Saisons VARCHAR(50),
+Synopsis TEXT,
+note INT
+);
+
+CREATE TABLE Categories (
+ID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+libelle VARCHAR(15),
+DESCRIPTION TEXT,
+Date_creation DATE,
+Date_modification DATE
+);
+
+CREATE TABLE Categorie_Films (
+ID_categorie INT NOT NULL,
+FOREIGN KEY (ID_categorie) REFERENCES Categories(ID),
+ID_films INT NOT NULL,
+FOREIGN KEY (ID_films) REFERENCES Films(ID)
+);
+
+CREATE TABLE Categorie_Series (
+ID_categorie INT NOT NULL,
+FOREIGN KEY (ID_categorie) REFERENCES Categories(ID),
+ID_series INT NOT NULL,
+FOREIGN KEY (ID_series) REFERENCES Series(ID)
+);
+
+CREATE TABLE Commentaires (
+ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+ID_user INT NOT NULL,
+FOREIGN KEY (ID_user) REFERENCES Utilisateurs(ID),
+Auteur VARCHAR(20),
+ID_films INT,
+FOREIGN KEY (ID_films) REFERENCES Films(ID),
+ID_series INT,
+FOREIGN KEY (ID_series) REFERENCES Series(ID),
+texte TEXT
+);
+
+CREATE TABLE Note (
+ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+Note INT,
+ID_films INT,
+FOREIGN KEY (ID_films) REFERENCES Films(ID),
+ID_series INT,
+FOREIGN KEY (ID_series) REFERENCES Series(ID),
+ID_user INT NOT NULL,
+FOREIGN KEY (ID_user) REFERENCES Utilisateurs(ID)
+);
+
+CREATE TABLE Playlist(
+ID_films INT, FOREIGN KEY (ID_films) REFERENCES Films(ID),
+ID_series INT, FOREIGN KEY (ID_series) REFERENCES Series(ID),
+ID_utilisateur INT NOT NULL, FOREIGN KEY (ID_utilisateur) REFERENCES Utilisateurs(ID)
+);
+
+INSERT INTO Role(libelle, DESCRIPTION) VALUES(
+'Administrateur',
+'Vous disposez de tout les droits'
+),
+(
+'Utilisateurs',
+'Vous pouvez consultez nos films et series'
+);
+INSERT INTO Utilisateurs(Nom,Prenom, Pseudo, Password, Date_de_naissance,Pays,Sexe,Date_creation,Date_modification) VALUES(
+'test',
+'test',
+'test',
+MD5('test'),
+'1998-11-23',
+'France',
+'H',
+'2020-10-10',
+'2020-10-10'
+);
+
+INSERT INTO Utilisateurs(Nom,Prenom, Pseudo, Password, Date_de_naissance,Pays,Sexe, Role, Date_creation,Date_modification) VALUES(
+'Smajovic',
+'Demirel',
+'AISEN',
+MD5('demi1509'),
+'1998-09-15',
+'France',
+'H',
+1,
+'2020-10-10',
+'2020-10-10'
+);
+
+INSERT INTO Categories (Libelle, Description, Date_creation, Date_modification) VALUES (
+'Action',
+'Retrouvez tous les films',
+'2016-09-10',
+'2016-08-02'
+),
+
+(
+'Humour',
+'Retrouvez toutes les films d humour',
+'2016-09-10',
+'2016-08-02'
+),
+(
+'Horreur',
+'Retrouvez tous les films d horreur',
+'2016-09-10',
+'2016-08-02'
+),
+(
+'Manga',
+'Retrouvez tous les animes de manga',
+'2016-09-10',
+'2016-08-02'
+),
+(
+'Drame',
+'Retrouvez tous les drames',
+'2016-09-10',
+'2016-08-02'
+);
+
+INSERT INTO Films(Titre, Realisateur, Annee, Image, Categorie, Duree, Synopsis) VALUES
+(
+'Demain tout commence',
+'Hugo Gelin',
+'2016',
+'images/demain_tout_commence.jpg',
+'5',
+'1h58min',
+'Samuel vit sa vie sans attaches ni responsabilités, au bord de la mer sous le soleil du sud de la France, près des gens qu’il aime et avec qui il travaille sans trop se fatiguer. Jusqu’à ce qu’une de ses anciennes conquêtes lui laisse sur les bras un bébé de quelques mois, Gloria : sa fille ! Incapable de s’occuper d’un bébé et bien décidé à rendre l’enfant à sa mère, Samuel se précipite à Londres pour tenter de la retrouver, sans succès. 8 ans plus tard, alors que Samuel et Gloria ont fait leur vie à Londres et sont devenus inséparables, la mère de Gloria revient dans leur vie pour récupérer sa fille…'
+);
+
+INSERT INTO Series (Titre, Realisateur, Annee, Image, Categorie, Saisons, Synopsis) VALUES
+(
+'Breaking Bad',
+'Vince Gilligan',
+'2008',
+'images/breaking_bad.jpg',
+'5',
+'5 saisons',
+'Walter White, 50 ans, est professeur de chimie dans un lycée du Nouveau-Mexique. Pour subvenir aux besoins de Skyler, sa femme enceinte, et de Walt Junior, son fils handicapé, il est obligé de travailler doublement. Son quotidien déjà morose devient carrément noir lorsqu\'il apprend qu\'il est atteint d\'un incurable cancer des poumons. Les médecins ne lui donnent pas plus de deux ans à vivre. Pour réunir rapidement beaucoup d\'argent afin de mettre sa famille à l\'abri, Walter ne voit plus qu\'une solution : mettre ses connaissances en chimie à profit pour fabriquer et vendre du crystal meth, une drogue de synthèse qui rapporte beaucoup. Il propose à Jesse, un de ses anciens élèves devenu un petit dealer de seconde zone, de faire équipe avec lui. Le duo improvisé met en place un labo itinérant dans un vieux camping-car. Cette association inattendue va les entraîner dans une série de péripéties tant comiques que pathétiques.'
+);
+
+COMMIT;
+
+ROLLBACK;
