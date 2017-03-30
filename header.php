@@ -10,7 +10,7 @@
 
 
 try {
-    $co = new PDO('mysql:host=localhost;dbname=my_streaming;charset=utf8', 'root', 'demi1509');
+    $co = new PDO('mysql:host=localhost;dbname=my_streaming;charset=utf8', 'root', 'password');
 } catch (PDOException $e) {
     echo "Erreur lors de la connexion: " . $e-> getMessage();
 
